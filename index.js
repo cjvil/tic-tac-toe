@@ -1,4 +1,4 @@
-const commander = require('commander');
+var prompt = require('prompt');
 
 class Game {
   constructor() {
