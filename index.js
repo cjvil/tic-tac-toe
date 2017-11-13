@@ -1,6 +1,29 @@
+const commander = require('commander');
+
 class Game {
   constructor() {
     this.board = new Board();
+  }
+
+  // input 'top', 'middle', 'bottom' for row and 0, 1, 2 for col
+  placePiece(piece, row, col) {
+    if (row === 'top') {
+      if(!this.board.topRow[col]) {
+        this.board.topRow[col] = piece;
+      }
+    }
+
+    if (row === 'middle') {
+      if(!this.board.middleRow[col]) {
+        this.board.middleRow[col] = piece;
+      }
+    }
+
+    if (row === 'bottom') {
+      if(!this.board.bottomRow[col]) {
+        this.board.bottomRow[col] = piece;
+      }
+    }
   }
 
   detectWin(piece) {
@@ -42,6 +65,41 @@ class Game {
 
     return false;
   }
+
+  drawBoard() {
+    let outputTop = '';
+    let outputMiddle = '';
+    let outputBottom = '';
+
+    for (var i = 0; i < 3; i++) {
+      if (!this.board.topRow[i]) {
+        outputTop += '[]';
+      } else {
+        outputTop += this.board.topRow[0];
+      }
+    }
+
+
+    for (var i = 0; i < 3; i++) {
+      if (!this.board.middleRow[i]) {
+        outputMiddle += '[]';
+      } else {
+        outputMiddle += this.board.middleRow[0];
+      }
+    }
+
+    for (var i = 0; i < 3; i++) {
+      if (!this.board.bottomRow[i]) {
+        outputBottom += '[]';
+      } else {
+        outputBottom += this.board.bottomRow[0];
+      }
+    }
+
+    console.log(outputTop);
+    console.log(outputMiddle);
+    console.log(outputBottom);
+  }
 };
 
 class Board {
@@ -53,4 +111,5 @@ class Board {
 }
 
 var game = new Game();
-console.log(game);
+game.drawBoard();
+console.log(game.detectWin('x'));
