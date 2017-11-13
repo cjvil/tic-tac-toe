@@ -11,19 +11,17 @@ class Game {
       if(!this.board.topRow[col]) {
         this.board.topRow[col] = piece;
       }
-    }
-
-    if (row === 'middle') {
+    } else if (row === 'middle') {
       if(!this.board.middleRow[col]) {
         this.board.middleRow[col] = piece;
       }
-    }
-
-    if (row === 'bottom') {
+    } else if (row === 'bottom') {
       if(!this.board.bottomRow[col]) {
         this.board.bottomRow[col] = piece;
       }
     }
+
+    this.drawBoard();
   }
 
   detectWin(piece) {
