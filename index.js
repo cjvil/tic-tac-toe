@@ -15,26 +15,34 @@ class Game {
         return true;
       }
 
-      if (this.topRow[i] !== piece) {
+      if (this.board.topRow[i] !== piece) {
         topRowWin = false;
       }
 
-      if (this.middleRow[i] !== piece) {
+      if (this.board.middleRow[i] !== piece) {
         middleRowWin = false;
       }
 
-      if (this.bottomRow[i] !== piece) {
+      if (this.board.bottomRow[i] !== piece) {
         bottomRowWin = false;
       }
     }
-  }
 
-  if (topRowWin || middleRowWin || bottomRowWin) {
-    return true;
-  }
+    if (topRowWin || middleRowWin || bottomRowWin) {
+      return true;
+    }
 
-  return false;
-}
+    if (this.board.topRow[0] === piece && this.board.middleRow[1] === piece && this.board.bottomRow[2] === piece) {
+      return true;
+    }
+
+    if (this.board.topRow[2] === piece && this.board.middleRow[1] === piece && this.board.bottomRow[0] === piece) {
+      return true;
+    }
+
+    return false;
+  }
+};
 
 class Board {
   constructor() {
