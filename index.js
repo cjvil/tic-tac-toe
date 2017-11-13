@@ -110,4 +110,22 @@ class Board {
 
 var game = new Game();
 game.drawBoard();
-console.log(game.detectWin('x'));
+
+prompt.start();
+
+var getInput = function() {
+  prompt.get(['piece', 'row', 'col'], function (err, result) {
+    game.placePiece(result.piece, result.row, result.col);
+
+    if (!game.detectWin('x') && !game.detectWin('o')) {
+      getInput();
+    }
+  });
+}
+
+
+getInput();
+
+// while (!game.detectWin('x') && !game.detectWin('o')) {
+  
+// }
